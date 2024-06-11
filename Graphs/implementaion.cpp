@@ -38,7 +38,7 @@ public:
             cout << endl;
         }
     }
-
+    //BFS - time complexity O(n + e) n=nodes e=edges 
     void bfs(int src, unordered_map<int, bool> &visited)
     {
         queue<int> q;
@@ -63,7 +63,7 @@ public:
             }
         }
     }
-
+    //DFS is like recursion 
     void dfs(int src, unordered_map<int, bool> &visited)
     {
         cout << src << ", ";
@@ -113,11 +113,11 @@ int main()
     Graph<int> g;
     // n -> number of nodes in graph
     int n = 5;
-    g.addEdge(0, 1, 0);
-    g.addEdge(1, 3, 0);
-    g.addEdge(0, 2, 0);
-    g.addEdge(2, 4, 0);
-
+    g.addEdge(0, 1, 0);    //                   0
+    g.addEdge(1, 3, 0);    //                  / \ 
+    g.addEdge(0, 2, 0);    //                 1   2
+    g.addEdge(2, 4, 0);    //                /     \ 
+                           //               3       4  
     g.printAdjacencyList();
     cout << endl;
 
@@ -131,8 +131,8 @@ int main()
             g.bfs(i, visited);
         }
     }
-    cout << endl
-         << "Printing DFS Traversal: " << endl;
+     
+    cout << endl<< "Printing DFS Traversal: " << endl;
     unordered_map<int, bool> visited2;
     for (int i = 0; i < n; i++)
     {
