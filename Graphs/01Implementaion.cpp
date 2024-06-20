@@ -1,16 +1,15 @@
 /*BFS and DFS traversal of a Graph */
-
 #include <iostream>
 #include <vector>
 #include <unordered_map>
 #include <list>
 #include <queue>
 using namespace std;
-template <typename T> // by this we can
+template <typename T> // by this we can define datatype of T 
 class Graph
 {
 public:
-    unordered_map<T, list<T>> adjList;
+    unordered_map <T, list<T>> adjList;
 
     void addEdge(T u, T v, bool direction)
     {
