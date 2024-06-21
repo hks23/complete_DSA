@@ -1,6 +1,6 @@
 // Linear ordering of vertices such that for every edge U -> V , U comes before V in that order
 //  Topological sort can be done using BFS or DFS
-// Topological sort can only be applied on Directed Acyclic Graph
+// Topological sort can only be applied on Directed Acyclic Graph not in Cyclic graph
 
 //Simple definition - vo node pehle aayegi jiski dependency khatam ho chuki hai
 /*      0 -> 1 -> 2 -> 3 -> 5
@@ -71,20 +71,52 @@ public:
         //while returning, store the node in stack
         ans.push(src);
     }
+    void topoSortBFS(int n, vector<int>&ans){
+        queue<int> q;
+        unordered_map<int, int> indegree;
+
+        //calculate indegree using adjList
+        for(auto i: adjList){
+            int src = i.first;
+            for(auto nbr: i.second){
+                indegree[nbr]++;
+            }
+        }
+        //put all nodes inside queue, which has indegree = 0
+        for(int i=0; i<n; i++){
+            if(indegree[i] == 0){
+                q.push(i);
+            }
+        }
+        //bfs logic
+        while(!q.empty()){
+            int frontNode = q.front();
+            q.pop();
+            ans.push_back(frontNode);
+            for(auto nbr: adjList[frontNode]){
+                indegree[nbr]--;
+                //check for Zero again
+                if(indegree[nbr] == 0){
+                    q.push(nbr);
+                }
+            }
+        }
+    }
+
 };
 
 int main()
 {
     int n=8;
     Graph<int> g;
-    g.addEdge(0, 1, 1);
-    g.addEdge(1, 2, 1);
-    g.addEdge(2, 3, 1);
-    g.addEdge(3, 4, 1);
-    g.addEdge(3, 5, 1);
+    g.addEdge(7, 1, 1);
     g.addEdge(4, 6, 1);
-    g.addEdge(5, 6, 1);
+    g.addEdge(2, 4, 1);
+    g.addEdge(3, 7, 1);
+    g.addEdge(2, 5, 1);
+    g.addEdge(5, 3, 1);
     g.addEdge(6, 7, 1);
+    g.addEdge(7, 0, 1);
     g.printAdjacencyList();
 
     unordered_map<int , bool> visited;
@@ -94,10 +126,17 @@ int main()
             g.topoSortDFS(i,visited,ans);
     }
 
-    cout<<"Topo Sort: "<<endl;
+    cout<<"Topo Sort: DFS "<<endl;
     while(!ans.empty()){
-        cout<<ans.top()<<" ";
+        cout<<ans.top()<<", ";
         ans.pop();
+    }
+
+    cout<<endl<<"Topo Sort: BFS "<<endl;
+    vector<int> ans2;
+    g.topoSortBFS(n,ans2);
+    for(auto it: ans2){
+        cout<<it<<", ";
     }
     return 0;
 }
