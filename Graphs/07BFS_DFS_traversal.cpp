@@ -40,68 +40,68 @@ public:
     }
 
     // BFS - time complexity O(n + e) n=nodes e=edges
-    void bfs(int src) // but what if the graphs are disconnected hence we need to pass call for each node
-    {
-        queue<int> q;
-        unordered_map<int, bool> visited;
+    // void bfs(int src) // but what if the graphs are disconnected hence we need to pass call for each node
+    // {
+    //     queue<int> q;
+    //     unordered_map<int, bool> visited;
 
-        q.push(src);
-        visited[src] = true;
+    //     q.push(src);
+    //     visited[src] = true;
 
-        while (!q.empty())
-        {
-            int frontNode = q.front();
-            q.pop();
-            cout << frontNode << ", ";
+    //     while (!q.empty())
+    //     {
+    //         int frontNode = q.front();
+    //         q.pop();
+    //         cout << frontNode << ", ";
 
-            // insert neighbours
-            for (auto neighbour : adjList[frontNode])
-            {
-                if (!visited[neighbour])
-                {
-                    q.push(neighbour);
-                    visited[neighbour] = true;
-                }
-            }
-        }
-    }
-    void bfs1(int src, unordered_map<int, bool> &visited)
-    {
-        queue<int> q;
+    //         // insert neighbours
+    //         for (auto neighbour : adjList[frontNode])
+    //         {
+    //             if (!visited[neighbour])
+    //             {
+    //                 q.push(neighbour);
+    //                 visited[neighbour] = true;
+    //             }
+    //         }
+    //     }
+    // }
+    // void bfs1(int src, unordered_map<int, bool> &visited)
+    // {
+    //     queue<int> q;
 
-        q.push(src);
-        visited[src] = true;
+    //     q.push(src);
+    //     visited[src] = true;
 
-        while (!q.empty())
-        {
-            int frontNode = q.front();
-            q.pop();
-            cout << frontNode << ", ";
+    //     while (!q.empty())
+    //     {
+    //         int frontNode = q.front();
+    //         q.pop();
+    //         cout << frontNode << ", ";
 
-            // insert neighbours
-            for (auto neighbour : adjList[frontNode])
-            {
-                if (!visited[neighbour])
-                {
-                    q.push(neighbour);
-                    visited[neighbour] = true;
-                }
-            }
-        }
-    }
-    // DFS is like recursion
-    void dfs(int src, unordered_map<int, bool> &visited)
-    {
-        cout << src << ", ";
-        visited[src] = true;
-        for (auto neighbour : adjList[src])
-        {
-            if (!visited[neighbour])
-            {
-                dfs(neighbour, visited);
-            }
-        }
-    }
+    //         // insert neighbours
+    //         for (auto neighbour : adjList[frontNode])
+    //         {
+    //             if (!visited[neighbour])
+    //             {
+    //                 q.push(neighbour);
+    //                 visited[neighbour] = true;
+    //             }
+    //         }
+    //     }
+    // }
+    // // DFS is like recursion
+    // void dfs(int src, unordered_map<int, bool> &visited)
+    // {
+    //     cout << src << ", ";
+    //     visited[src] = true;
+    //     for (auto neighbour : adjList[src])
+    //     {
+    //         if (!visited[neighbour])
+    //         {
+    //             dfs(neighbour, visited);
+    //         }
+    //     }
+    // }
 };
 
 int main()
@@ -123,27 +123,27 @@ int main()
     
     g.printAdjacencyList();
     cout << endl;
-    g.bfs(0);
-    cout << endl;
+    // g.bfs(0);
+    // cout << endl;
 
-    cout << "Printing BFS Traversal" << endl;
-    unordered_map<int, bool> visited;
-    for (int i = 0; i < 4; i++)
-    {
-        if (!visited[i])
-        {
-            g.bfs1(i, visited); // in case of disconnected graph we need to call bfs method for each node
-        }
-    }
-    cout<<endl;
-    cout << "Printing DFS Traversal" << endl;
-    unordered_map<int, bool> visited2;
-    for (int i = 0; i < 4; i++)
-    {
-        if (!visited2[i])
-        {
-            g.dfs(i, visited2); // in case of disconnected graph we need to call bfs method for each node
-        }
-    }
+    // cout << "Printing BFS Traversal" << endl;
+    // unordered_map<int, bool> visited;
+    // for (int i = 0; i < 4; i++)
+    // {
+    //     if (!visited[i])
+    //     {
+    //         g.bfs1(i, visited); // in case of disconnected graph we need to call bfs method for each node
+    //     }
+    // }
+    // cout<<endl;
+    // cout << "Printing DFS Traversal" << endl;
+    // unordered_map<int, bool> visited2;
+    // for (int i = 0; i < 4; i++)
+    // {
+    //     if (!visited2[i])
+    //     {
+    //         g.dfs(i, visited2); // in case of disconnected graph we need to call bfs method for each node
+    //     }
+    // }
     return 0;
 }
