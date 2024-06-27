@@ -12,7 +12,7 @@ public:
 // Function to insert a node at a given position
 void insertNode(Node *&head, int data, int position)
 {
-    Node* newNode = new Node(data);
+    Node *newNode = new Node(data);
 
     // If inserting at the head (position 0)
     if (position == 1)
@@ -31,7 +31,7 @@ void insertNode(Node *&head, int data, int position)
         i++;
     }
     Node *shidtedNode = curr->next;
-  
+
     newNode->next = shidtedNode;
     curr->next = newNode;
 }
@@ -55,7 +55,7 @@ int main()
     Node *node2 = new Node(30);
     Node *node3 = new Node(40);
     Node *node4 = new Node(50);
-    
+
     head->next = node;
     node->next = node2;
     node2->next = node3;
@@ -64,7 +64,7 @@ int main()
 
     // Example usage:
     insertNode(head, 1, 1); // List: 1
-    //LL after insertion of node
-    printList(head); 
+    // LL after insertion of node
+    printList(head);
     return 0;
 }
