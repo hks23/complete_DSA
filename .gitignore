@@ -1,4 +1,8 @@
 # Ignore all .exe files
 *.exe
-
-"./testCodes"
+# *.log
+# *.tmp
+# node_modules/
+# testCodes/
+# *.vscode
+# vscode/
