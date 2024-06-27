@@ -2,7 +2,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 // template <typename T> // by this we can define datatype of T
-
 class Graph
 {
 public:
