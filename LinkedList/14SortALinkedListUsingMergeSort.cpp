@@ -1,5 +1,4 @@
-// leetcode 148
-
+// leetcode 148 merge sort on a linked list
 class Solution
 {
 public:
