@@ -1,7 +1,28 @@
 // leetcode 148 merge sort on a linked list
-class Solution
+#include<bits/stdc++.h>
+using namespace std;
+
+class ListNode
 {
 public:
+
+     int data;
+    ListNode *prev;
+    ListNode *next;
+    // constructor
+    ListNode()
+    {
+        this->data = 0;
+        this->prev = NULL;
+        this->next = NULL;
+    }
+    ListNode(int data)
+    {
+        this->data = data;
+        this->prev = NULL;
+        this->next = NULL;
+    }
+
     ListNode *findMid(ListNode *head)
     { // using slow and fast pointer approach
         ListNode *slow = head;
@@ -31,7 +52,7 @@ public:
         while (left != NULL and right != NULL)
         {
 
-            if (left->val <= right->val)
+            if (left->data <= right->data)
             {
                 mptr->next = left; // mptr points to left node
                 mptr = left;       // mptr moves forward
